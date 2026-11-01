@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +29,10 @@
             --bg-card-hover: #1c2029;
             --accent-gold: #d4af37;
             --accent-amber: #e6a15c;
+            --accent-emerald: #10b981;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-subtle: rgba(212, 175, 55, 0.15);
+            --border-subtle: rgba(212, 175, 55, 0.18);
             --border-light: rgba(255, 255, 255, 0.08);
             --font-heading: 'Playfair Display', Georgia, serif;
             --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -50,7 +52,7 @@
             font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 70px; /* Space for mobile sticky bottom bar */
+            padding-bottom: 70px;
         }
 
         @media (min-width: 992px) {
@@ -185,10 +187,32 @@
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
         }
 
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
         .btn-outline {
             border: 1px solid var(--border-subtle);
             color: var(--text-main);
             background: rgba(255, 255, 255, 0.03);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
         }
 
         .cart-trigger {
@@ -201,6 +225,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: var(--transition);
+        }
+
+        .cart-trigger:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
         }
 
         .cart-badge {
@@ -585,6 +615,31 @@
             gap: 0.5rem;
         }
 
+        /* VIP & Events Section */
+        .vip-section {
+            padding: 60px 0;
+            background: rgba(212, 175, 55, 0.02);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .vip-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .vip-card {
+                grid-template-columns: 1fr 1fr;
+                padding: 3rem;
+            }
+        }
+
         /* Reservations Section */
         .reservation-section {
             padding: 60px 0;
@@ -633,6 +688,10 @@
             outline: none;
         }
 
+        .form-control:focus {
+            border-color: var(--accent-gold);
+        }
+
         .form-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -662,7 +721,7 @@
             right: 0;
             bottom: 0;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             background: var(--bg-card);
             border-left: 1px solid var(--border-light);
             z-index: 201;
@@ -723,7 +782,7 @@
         .cart-footer {
             padding: 1.25rem;
             border-top: 1px solid var(--border-light);
-            background: rgba(11, 13, 16, 0.5);
+            background: rgba(11, 13, 16, 0.8);
         }
 
         .cart-total-row {
@@ -732,6 +791,32 @@
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 1rem;
+        }
+
+        /* Order Type Selector */
+        .order-type-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4rem;
+            background: var(--bg-obsidian);
+            padding: 0.3rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .order-type-btn {
+            padding: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .order-type-btn.active {
+            background: var(--accent-gold);
+            color: #000;
         }
 
         /* Sticky Mobile Bottom Navigation Bar */
@@ -817,6 +902,35 @@
             }
         }
 
+        /* Floating WhatsApp Button */
+        .floating-wa-btn {
+            position: fixed;
+            bottom: 75px;
+            right: 15px;
+            width: 52px;
+            height: 52px;
+            background: #25D366;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 85;
+            transition: var(--transition);
+        }
+
+        @media (min-width: 992px) {
+            .floating-wa-btn {
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+
+        .floating-wa-btn:hover {
+            transform: scale(1.1);
+        }
+
         /* Responsive Visibility Helpers */
         @media (max-width: 991px) {
             .nav-links, .nav-actions .btn-primary {
@@ -841,7 +955,7 @@
                 <ul class="nav-links">
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#menu" class="nav-link">Pan-Asian Menu</a></li>
-                    <li><a href="#menu" class="nav-link">Robata Grill</a></li>
+                    <li><a href="#vip" class="nav-link">VIP & Events</a></li>
                     <li><a href="#reservations" class="nav-link">Reservations</a></li>
                 </ul>
 
@@ -863,7 +977,7 @@
     <div class="mobile-nav" id="mobileNav">
         <a href="#about" class="nav-link" onclick="toggleMobileNav()">About Us</a>
         <a href="#menu" class="nav-link" onclick="toggleMobileNav()">Pan-Asian Menu</a>
-        <a href="#menu" class="nav-link" onclick="toggleMobileNav()">Robata Grill</a>
+        <a href="#vip" class="nav-link" onclick="toggleMobileNav()">VIP & Catering</a>
         <a href="#reservations" class="nav-link" onclick="toggleMobileNav()">Reservations</a>
     </div>
 
@@ -888,6 +1002,9 @@
                         <a href="#menu" class="btn btn-outline">
                             <i data-lucide="utensils" style="width:16px;"></i> Explore Menu
                         </a>
+                        <button class="btn btn-whatsapp" onclick="openDirectWhatsApp('Hello Gusto Abuja! I would like to make an inquiry.')">
+                            <i data-lucide="message-square" style="width:16px;"></i> WhatsApp Us
+                        </button>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -964,6 +1081,7 @@
                     <button class="cat-btn" onclick="filterMenu('sushi', this)">Sushi & Sashimi</button>
                     <button class="cat-btn" onclick="filterMenu('mains', this)">Mains</button>
                     <button class="cat-btn" onclick="filterMenu('cocktails', this)">Cocktails</button>
+                    <button class="cat-btn" onclick="filterMenu('desserts', this)">Desserts</button>
                 </div>
 
                 <div class="menu-search">
@@ -978,6 +1096,68 @@
         </div>
     </section>
 
+    <!-- VIP Events & Private Lounge Section -->
+    <section class="vip-section" id="vip">
+        <div class="container">
+            <div class="vip-card">
+                <div>
+                    <span class="section-subtitle">Exclusive Spaces</span>
+                    <h2 class="heading-lg" style="margin-bottom: 1rem;">Private VIP & Catering Inquiries</h2>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+                        Host private celebrations, executive dinners, birthdays, or corporate event catering with Gusto Abuja's bespoke culinary team.
+                    </p>
+
+                    <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem; color:var(--text-muted);">
+                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                            <i data-lucide="check-circle" style="color:var(--accent-gold); width:18px;"></i>
+                            <span>Private Cave Room & VIP Lounge Access</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                            <i data-lucide="check-circle" style="color:var(--accent-gold); width:18px;"></i>
+                            <span>Customized Multi-Course Tasting Menus</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                            <i data-lucide="check-circle" style="color:var(--accent-gold); width:18px;"></i>
+                            <span>Dedicated Sommelier & Mixologist Service</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form onsubmit="handleVipRequest(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" id="vip-name" class="form-control" placeholder="e.g., Chief Emeka" required>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Phone *</label>
+                            <input type="tel" id="vip-phone" class="form-control" placeholder="+234..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Event Type *</label>
+                            <select id="vip-type" class="form-control" required>
+                                <option value="Birthday Party">Birthday Party</option>
+                                <option value="Corporate Dinner">Corporate Dinner</option>
+                                <option value="Private VIP Dining">Private VIP Dining</option>
+                                <option value="Outside Catering">Outside Catering Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Estimated Guest Count & Special Instructions</label>
+                        <textarea id="vip-notes" class="form-control" rows="2" placeholder="e.g. 15 guests, champagne setup, dietary needs..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-whatsapp" style="width:100%; justify-content:center; padding:0.85rem;">
+                        <i data-lucide="message-square" style="width:18px;"></i> Submit VIP Inquiry to WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Reservations Section -->
     <section class="reservation-section" id="reservations">
         <div class="container">
@@ -986,7 +1166,7 @@
                     <span class="section-subtitle">Reservations</span>
                     <h2 class="heading-lg" style="margin-bottom: 1rem;">Secure Your Table</h2>
                     <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
-                        Reserve your seating ahead to guarantee your preferred space at Gusto Abuja.
+                        Reserve your seating ahead to guarantee your preferred space at Gusto Abuja. All reservations route instantly to our WhatsApp concierge for direct confirmation.
                     </p>
                     
                     <div style="display:flex; flex-direction:column; gap:1rem; font-size:0.85rem;">
@@ -998,47 +1178,69 @@
                             <i data-lucide="clock" style="color:var(--accent-gold); width:18px;"></i>
                             <span>Daily: 12:00 PM - 1:00 AM</span>
                         </div>
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <i data-lucide="map-pin" style="color:var(--accent-gold); width:18px;"></i>
+                            <span>Adetokunbo Ademola Crescent, Wuse II, Abuja</span>
+                        </div>
                     </div>
                 </div>
 
                 <form onsubmit="handleReservation(event)">
                     <div class="form-group">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" placeholder="e.g., Praise Tunde" required>
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" id="res-name" class="form-control" placeholder="e.g., Praise Tunde" required>
                     </div>
 
                     <div class="form-grid-2">
                         <div class="form-group">
-                            <label class="form-label">Phone</label>
-                            <input type="tel" class="form-control" placeholder="+234..." required>
+                            <label class="form-label">Phone *</label>
+                            <input type="tel" id="res-phone" class="form-control" placeholder="+234..." required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Guests</label>
-                            <select class="form-control" required>
-                                <option value="2">2 Persons</option>
-                                <option value="4">4 Persons</option>
-                                <option value="6">6+ Guests</option>
+                            <label class="form-label">Guests *</label>
+                            <select id="res-guests" class="form-control" required>
+                                <option value="2 Guests">2 Persons (Table for Two)</option>
+                                <option value="4 Guests">4 Persons</option>
+                                <option value="6 Guests">6 Persons</option>
+                                <option value="8+ Guests VIP">8+ VIP Group</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-grid-2">
                         <div class="form-group">
-                            <label class="form-label">Date</label>
-                            <input type="date" class="form-control" required>
+                            <label class="form-label">Date *</label>
+                            <input type="date" id="res-date" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Time</label>
-                            <select class="form-control" required>
-                                <option value="18:00">6:00 PM</option>
-                                <option value="19:30">7:30 PM</option>
-                                <option value="21:00">9:00 PM</option>
+                            <label class="form-label">Time Slot *</label>
+                            <select id="res-time" class="form-control" required>
+                                <option value="12:30 PM">12:30 PM (Lunch)</option>
+                                <option value="03:00 PM">03:00 PM (Afternoon)</option>
+                                <option value="06:30 PM">06:30 PM (Dinner)</option>
+                                <option value="08:30 PM">08:30 PM (Prime Dinner)</option>
+                                <option value="10:30 PM">10:30 PM (Late Night Vibe)</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:0.85rem; margin-top:0.5rem;">
-                        Confirm Reservation
+                    <div class="form-group">
+                        <label class="form-label">Seating Area *</label>
+                        <select id="res-zone" class="form-control">
+                            <option value="Main Dining Sanctuary">Main Dining Sanctuary</option>
+                            <option value="Outdoor Garden Terrace">Outdoor Garden Terrace</option>
+                            <option value="Cave VIP Lounge">Cave VIP Lounge</option>
+                            <option value="Botanical Bar Counter">Botanical Bar Counter</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Special Requests / Occasions</label>
+                        <input type="text" id="res-notes" class="form-control" placeholder="e.g., Anniversary, birthday setup...">
+                    </div>
+
+                    <button type="submit" class="btn btn-whatsapp" style="width:100%; justify-content:center; padding:0.85rem; margin-top:0.5rem;">
+                        <i data-lucide="message-square" style="width:18px;"></i> Confirm Reservation via WhatsApp
                     </button>
                 </form>
             </div>
@@ -1063,7 +1265,16 @@
             <i data-lucide="shopping-bag"></i>
             <span>Cart (<span id="mobileCartCount">0</span>)</span>
         </button>
+        <button class="bar-item" onclick="openDirectWhatsApp('Hello Gusto Abuja!')">
+            <i data-lucide="message-square" style="color:#25D366;"></i>
+            <span>WhatsApp</span>
+        </button>
     </div>
+
+    <!-- Floating WhatsApp Widget Button -->
+    <button class="floating-wa-btn" onclick="openDirectWhatsApp('Hello Gusto Abuja! I would like to make an inquiry.')" title="Chat on WhatsApp">
+        <i data-lucide="message-square" style="width:26px;"></i>
+    </button>
 
     <!-- Cart Drawer -->
     <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -1078,12 +1289,24 @@
         </div>
 
         <div class="cart-footer">
+            <!-- Order Type Selection -->
+            <div class="order-type-selector">
+                <button class="order-type-btn active" onclick="setOrderType('Delivery', this)">Delivery</button>
+                <button class="order-type-btn" onclick="setOrderType('Pickup', this)">Pickup</button>
+                <button class="order-type-btn" onclick="setOrderType('Dine-In', this)">Dine-In</button>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1rem;">
+                <input type="text" id="cust-name" placeholder="Full Name *" class="form-control" style="font-size:0.8rem; padding:0.55rem;">
+                <input type="text" id="cust-address" placeholder="Delivery Address / Table No *" class="form-control" style="font-size:0.8rem; padding:0.55rem;">
+            </div>
+
             <div class="cart-total-row">
-                <span>Subtotal</span>
+                <span>Total Amount</span>
                 <span id="cartSubtotal" class="gold-gradient">₦0</span>
             </div>
-            <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="checkoutWhatsApp()">
-                <i data-lucide="message-square" style="width:18px;"></i> Order via WhatsApp
+            <button class="btn btn-whatsapp" style="width:100%; justify-content:center;" onclick="checkoutWhatsApp()">
+                <i data-lucide="message-square" style="width:18px;"></i> Order via WhatsApp (+234 809 666 6344)
             </button>
         </div>
     </div>
@@ -1095,16 +1318,25 @@
     </div>
 
     <script>
+        const TARGET_PHONE = "2348096666344";
+
         const menuData = [
             { id: 1, name: "Gusto Prime Suya Ribeye", category: "robata", price: 28500, tag: "Chef Special", desc: "Charcoal-grilled premium beef ribeye rubbed in traditional suya spice mix.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" },
-            { id: 2, name: "Dragon Roll Maki", category: "sushi", price: 19500, tag: "Popular", desc: "Tempura prawn, avocado, unagi eel sauce, and tobiko caviar topping.", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Dragon Roll Maki (8pcs)", category: "sushi", price: 19500, tag: "Popular", desc: "Tempura prawn, avocado, unagi eel sauce, and tobiko caviar topping.", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80" },
             { id: 3, name: "Pan-Seared Salmon Teriyaki", category: "mains", price: 24000, tag: "Fresh Catch", desc: "Norwegian salmon served over wok-tossed garlic butter jasmine rice.", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" },
             { id: 4, name: "Abuja Sunset Botanical Fizz", category: "cocktails", price: 9500, tag: "Signature Drink", desc: "Hibiscus gin infusion, elderflower tonic, citrus, and gold flake garnish.", img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" },
             { id: 5, name: "Charred Robata Lamb Cutlets", category: "robata", price: 31000, tag: "Robata Grill", desc: "Marinated overnight in sweet soy, ginger, and sesame glaze.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" },
-            { id: 6, name: "Spicy Tuna Sashimi Platter", category: "sushi", price: 22000, tag: "Raw Bar", desc: "Fresh yellowfin tuna with ponzu, jalapeño slices, and truffle oil.", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" }
+            { id: 6, name: "Spicy Tuna Sashimi Platter", category: "sushi", price: 22000, tag: "Raw Bar", desc: "Fresh yellowfin tuna with ponzu, jalapeño slices, and truffle oil.", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Belgian Lava Chocolate Cake", category: "desserts", price: 8500, tag: "Sweet", desc: "Warm dark chocolate cake with a molten center and vanilla gelato.", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" }
         ];
 
         let cart = [];
+        let selectedOrderType = "Delivery";
+
+        function openDirectWhatsApp(messageText) {
+            const url = `https://wa.me/${TARGET_PHONE}?text=${encodeURIComponent(messageText)}`;
+            window.open(url, '_blank');
+        }
 
         function renderMenu(items) {
             const grid = document.getElementById('menuGrid');
@@ -1171,6 +1403,12 @@
             updateCartUI();
         }
 
+        function setOrderType(type, btnElement) {
+            selectedOrderType = type;
+            document.querySelectorAll('.order-type-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+        }
+
         function updateCartUI() {
             const cartItems = document.getElementById('cartItems');
             const cartCount = document.getElementById('cartCount');
@@ -1219,25 +1457,84 @@
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
+        /* 1. WHATSAPP ORDER CHECKOUT ROUTING */
         function checkoutWhatsApp() {
-            if(cart.length === 0) return alert('Your cart is empty!');
+            if(cart.length === 0) return alert('Your cart is empty! Please add items to proceed.');
 
-            let text = "Hello Gusto Abuja! I would like to place an order:\n\n";
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if(!name || !address) {
+                return alert('Please enter your Name and Delivery Address / Table Number.');
+            }
+
+            let text = `*NEW GUSTO ABUJA ORDER*\n`;
+            text += `---------------------------------\n`;
+            text += `*Order Mode:* ${selectedOrderType}\n`;
+            text += `*Customer:* ${name}\n`;
+            text += `*Location / Table:* ${address}\n\n`;
+            text += `*SELECTED DISHES & DRINKS:*\n`;
+
             cart.forEach(item => {
-                text += `• ${item.name} x${item.qty} - ₦${(item.price * item.qty).toLocaleString()}\n`;
+                text += `• ${item.name} (x${item.qty}) - ₦${(item.price * item.qty).toLocaleString()}\n`;
             });
 
             const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
-            text += `\n*Total Amount: ₦${subtotal.toLocaleString()}*`;
-            text += `\n\nPlease let me know the estimated preparation time. Thank you!`;
+            text += `\n*TOTAL AMOUNT: ₦${subtotal.toLocaleString()}*\n`;
+            text += `---------------------------------\n`;
+            text += `Please confirm order preparation and payment details. Thank you!`;
 
-            const phone = "2348096666344";
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+            openDirectWhatsApp(text);
         }
 
+        /* 2. WHATSAPP TABLE RESERVATION ROUTING */
         function handleReservation(e) {
             e.preventDefault();
-            alert('Reservation request received! Our team will contact you shortly.');
+
+            const name = document.getElementById('res-name').value.trim();
+            const phone = document.getElementById('res-phone').value.trim();
+            const guests = document.getElementById('res-guests').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const zone = document.getElementById('res-zone').value;
+            const notes = document.getElementById('res-notes').value.trim();
+
+            let text = `*GUSTO ABUJA TABLE RESERVATION REQUEST*\n`;
+            text += `---------------------------------\n`;
+            text += `*Guest Name:* ${name}\n`;
+            text += `*Phone Number:* ${phone}\n`;
+            text += `*Party Size:* ${guests}\n`;
+            text += `*Date:* ${date}\n`;
+            text += `*Time Slot:* ${time}\n`;
+            text += `*Preferred Area:* ${zone}\n`;
+            if(notes) text += `*Special Request:* ${notes}\n`;
+            text += `---------------------------------\n`;
+            text += `Please confirm availability and table booking. Thank you!`;
+
+            openDirectWhatsApp(text);
+            showToast('Routing reservation request to WhatsApp...');
+        }
+
+        /* 3. WHATSAPP VIP / CATERING INQUIRY ROUTING */
+        function handleVipRequest(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('vip-name').value.trim();
+            const phone = document.getElementById('vip-phone').value.trim();
+            const eventType = document.getElementById('vip-type').value;
+            const notes = document.getElementById('vip-notes').value.trim();
+
+            let text = `*GUSTO ABUJA VIP & CATERING INQUIRY*\n`;
+            text += `---------------------------------\n`;
+            text += `*Client Name:* ${name}\n`;
+            text += `*Phone:* ${phone}\n`;
+            text += `*Event Category:* ${eventType}\n`;
+            if(notes) text += `*Details / Guest Estimate:* ${notes}\n`;
+            text += `---------------------------------\n`;
+            text += `I would like to discuss booking options and custom menus.`;
+
+            openDirectWhatsApp(text);
+            showToast('Routing VIP inquiry to WhatsApp...');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
